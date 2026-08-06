@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine Programming Language</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #1b1b1b;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #333;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .brand img {
+            width: 40px;
+            height: 40px;
+        }
+
+        nav a {
+            color: #f5c542;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .hero {
+            padding: 90px 20px;
+        }
+
+        .hero img {
+            width: 160px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #f5c542;
+        }
+
+        p {
+            color: #bdbdbd;
+            max-width: 750px;
+            margin: 10px auto;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #f5c542;
+            color: #111;
+        }
+
+        .secondary {
+            border: 1px solid #f5c542;
+            color: #f5c542;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: #242424;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #f5c542;
+            margin-bottom: 10px;
+        }
+
+        .code {
+            background: #111;
+            padding: 40px 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            color: #f5c542;
+            max-width: 900px;
+            margin: 30px auto 0;
+            text-align: left;
+            overflow-x: auto;
+        }
+
+        .code code {
+            display: block;
+            text-align: left;
+            font-family: Consolas, monospace;
+        }
+
+        .repo {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            background: #242424;
+            border-radius: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+
+        @media(max-width: 700px) {
+            h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="brand">
+        <img src="logo.png" alt="Shine Logo">
+        Shine
+    </div>
+
+    <a href="https://github.com/Shine-Language/Shine-Compiler">
+        GitHub
+    </a>
+</nav>
+
+
+<section class="hero">
+    <img src="logo.png" alt="Shine Logo">
+
+    <h1>
+        <span class="highlight">Shine</span>
+    </h1>
+
+    <p>
+        Low level language that compiles straight to machine code,
+        no runtime, no VM.
+    </p>
+
+    <p>
+        A small programming language with its own lexer,
+        parser, and LLVM-based code generation.
+    </p>
+
+    <div class="buttons">
+        <a class="btn primary" href="https://github.com/Shine-Language/Shine-Compiler">
+            View Repository
+        </a>
+
+        <a class="btn secondary" href="https://github.com/Shine-Language/Shine-Compiler#using-the-compiler">
+            Getting  Started
+        </a>
+    </div>
+</section>
+
+
+<section>
+    <h2>Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Simple Compilation</h3>
+            <p>
+                Shine code compiles straight into native machine code, making it fast and light.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>No Runtime Or VM</h3>
+            <p>
+                No interpreter, VM, bytecode system, or garbage collector.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Low Level Language</h3>
+            <p>
+                Built with a custom lexer, parser, and code generation pipeline.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<section>
+    <h2>Example</h2>
+
+    <pre class="code"><code>
+fn int main() {
+    write("Hello, World!");
+    r/0;
+}
+    </code></pre>
+</section>
+
+
+<section class="repo">
+
+    <h2>Open Source Language</h2>
+
+    <p>
+        Shine is actively being developed and available on GitHub.
+    </p>
+
+    <a class="btn primary" href="https://github.com/Shine-Language/Shine-Compiler">
+        Visit Our GitHub Repository
+    </a>
+
+</section>
+
+
+<footer>
+    Shine Language
+</footer>
+
+</body>
+</html>
