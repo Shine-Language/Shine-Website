@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shine Programming Language</title>
+    <link rel="icon" type="image/png" href="logo.png">
 
     <style>
         * {
@@ -14,7 +15,7 @@
         }
 
         body {
-            background: #1b1b1b;
+            background: #141414;
             color: #e8e8e8;
             line-height: 1.6;
         }
@@ -24,7 +25,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #2a2a2a;
         }
 
         .brand {
@@ -41,7 +42,7 @@
         }
 
         nav a {
-            color: #f5c542;
+            color: #f0a83c;
             text-decoration: none;
         }
 
@@ -69,7 +70,7 @@
         }
 
         .highlight {
-            color: #f5c542;
+            color: #f0a83c;
         }
 
         p {
@@ -93,13 +94,13 @@
         }
 
         .primary {
-            background: #f5c542;
+            background: #f0a83c;
             color: #111;
         }
 
         .secondary {
-            border: 1px solid #f5c542;
-            color: #f5c542;
+            border: 1px solid #f0a83c;
+            color: #f0a83c;
         }
 
         .cards {
@@ -111,40 +112,43 @@
         }
 
         .card {
-            background: #242424;
+            background: #1c1c1c;
             padding: 25px;
             border-radius: 10px;
-            border: 1px solid #333;
+            border: 1px solid #2a2a2a;
             text-align: center;
         }
 
         .card h3 {
-            color: #f5c542;
+            color: #f0a83c;
             margin-bottom: 10px;
         }
 
         .code {
-            background: #111;
-            padding: 40px 25px;
+            background: #0a0a0a;
+            padding: 40px;
             border-radius: 10px;
-            border: 1px solid #333;
-            color: #f5c542;
-            max-width: 900px;
+            border: 1px solid #2a2a2a;
+            color: #f0a83c;
+            width: fit-content;
+            max-width: 100%;
             margin: 30px auto 0;
             text-align: left;
             overflow-x: auto;
+            font-size: 20px;
         }
 
         .code code {
             display: block;
             text-align: left;
             font-family: Consolas, monospace;
+            white-space: pre;
         }
 
         .repo {
             max-width: 900px;
             margin: 0 auto 60px;
-            background: #242424;
+            background: #1c1c1c;
             border-radius: 12px;
         }
 
@@ -152,7 +156,7 @@
             text-align: center;
             padding: 30px;
             color: #888;
-            border-top: 1px solid #333;
+            border-top: 1px solid #2a2a2a;
         }
 
         @media(max-width: 700px) {
@@ -239,12 +243,10 @@
 <section>
     <h2>Example</h2>
 
-    <pre class="code"><code>
-fn int main() {
+    <pre class="code"><code>fn int main() {
     write("Hello, World!");
     r/0;
-}
-    </code></pre>
+}</code></pre>
 </section>
 
 
