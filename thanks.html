@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Downloading Shine</title>
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #141414;
+            color: #e8e8e8;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #e8e8e8;
+            text-decoration: none;
+        }
+
+        .brand:hover {
+            color: #f0a83c;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        nav a:not(.brand) {
+            color: #f0a83c;
+            text-decoration: none;
+            padding: 6px 16px;
+            border: 1px solid #3a3a3a;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        nav a:not(.brand):hover {
+            text-decoration: none;
+            border-color: #f0a83c;
+            background: rgba(240, 168, 60, 0.08);
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .hero img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #f0a83c;
+        }
+
+        p {
+            color: #bdbdbd;
+            max-width: 550px;
+            margin: 10px auto;
+            font-size: 18px;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 40px;
+            max-width: 700px;
+        }
+
+        .link-card {
+            display: block;
+            background: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 18px 24px;
+            text-decoration: none;
+            color: #e8e8e8;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s, transform 0.15s;
+            min-width: 220px;
+        }
+
+        .link-card:hover {
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .link-card small {
+            display: block;
+            color: #888;
+            font-weight: normal;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .link-github {
+            border-color: #3a3a3a;
+            background: #1a1a1a;
+        }
+
+        .link-github:hover {
+            border-color: #e8e8e8;
+            background: #222;
+            color: #fff;
+        }
+
+        .link-github small { color: #888; }
+
+        .link-wiki {
+            border-color: #1c2e3e;
+            background: #141c26;
+        }
+
+        .link-wiki:hover {
+            border-color: #4a9eda;
+            background: #182838;
+            color: #7fb8e0;
+        }
+
+        .link-wiki small { color: #5a8aaa; }
+
+        .link-start {
+            border-color: #1c2e1c;
+            background: #141c14;
+        }
+
+        .link-start:hover {
+            border-color: #7fce8f;
+            background: #182818;
+            color: #7fce8f;
+        }
+
+        .link-start small { color: #5a9a5a; }
+
+        .link-roadmap {
+            border-color: #2e1c3e;
+            background: #1c1426;
+        }
+
+        .link-roadmap:hover {
+            border-color: #b88eda;
+            background: #201838;
+            color: #b88eda;
+        }
+
+        .link-roadmap small { color: #8a5aaa; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        footer a {
+            color: #f0a83c;
+            text-decoration: none;
+        }
+
+        @media(max-width: 600px) {
+            h1 { font-size: 32px; }
+            .link-card { min-width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a class="brand" href="index.html">
+        <img src="logo.png" alt="Shine Logo">
+        Shine
+    </a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="wiki.html">Wiki</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <img src="logo.png" alt="Shine Logo">
+
+    <h1>Thanks for Downloading!</h1>
+
+    <p>
+        Your download should have started automatically.
+        Here are some helpful resources to get you started.
+    </p>
+
+    <div class="links">
+        <a class="link-card link-github" href="https://github.com/Shine-Language/Shine-Compiler">
+            GitHub
+            <small>Source code and releases</small>
+        </a>
+
+        <a class="link-card link-wiki" href="wiki.html">
+            Wiki
+            <small>Language documentation</small>
+        </a>
+
+        <a class="link-card link-start" href="wiki.html#install">
+            Getting Started
+            <small>Build your first program</small>
+        </a>
+
+        <a class="link-card link-roadmap" href="wiki.html#roadmap">
+            Roadmap
+            <small>What is coming next</small>
+        </a>
+    </div>
+</div>
+
+<footer>
+    Shine Language - Developed By KerbalMissile &middot; <a href="https://github.com/Shine-Language/Shine-Compiler">GitHub</a>
+</footer>
+
+</body>
+</html>

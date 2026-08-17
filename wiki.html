@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine Wiki - Documentation</title>
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scrollbar-color: #3a3a3a #141414;
+            scrollbar-width: thin;
+        }
+
+        body {
+            background: #141414;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #141414;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #3a3a3a;
+            border-radius: 8px;
+            border: 3px solid #141414;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #f0a83c;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            background: #141414;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #e8e8e8;
+            text-decoration: none;
+        }
+
+        .brand:hover {
+            color: #f0a83c;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 40px;
+            height: 40px;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        nav a:not(.brand) {
+            color: #f0a83c;
+            text-decoration: none;
+            padding: 6px 16px;
+            border: 1px solid #3a3a3a;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        nav a:not(.brand):hover {
+            text-decoration: none;
+            border-color: #f0a83c;
+            background: rgba(240, 168, 60, 0.08);
+        }
+
+        .layout {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        aside {
+            width: 260px;
+            flex-shrink: 0;
+            padding: 40px 20px 40px 4%;
+            position: sticky;
+            top: 78px;
+            max-height: calc(100vh - 78px);
+            overflow-y: auto;
+        }
+
+        aside h4 {
+            color: #888;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 22px 0 8px;
+        }
+
+        aside h4:first-child {
+            margin-top: 0;
+        }
+
+        aside a {
+            display: block;
+            color: #bdbdbd;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        aside a:hover {
+            background: #1c1c1c;
+            color: #f0a83c;
+        }
+
+        aside .search-box {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #e8e8e8;
+            font-size: 14px;
+            outline: none;
+        }
+
+        aside .search-box:focus {
+            border-color: #f0a83c;
+        }
+
+        aside .search-box::placeholder {
+            color: #888;
+        }
+
+        mark {
+            background: #2e2410;
+            color: #f0a83c;
+            border-radius: 3px;
+            padding: 0 2px;
+        }
+
+        .search-empty {
+            color: #888;
+            font-size: 14px;
+            padding: 20px 10px;
+        }
+
+        section.hidden {
+            display: none;
+        }
+
+        main {
+            flex: 1;
+            min-width: 0;
+            padding: 40px 4% 100px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        main > * {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        .page-header {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #bdbdbd;
+            font-size: 17px;
+            max-width: 700px;
+        }
+
+        .highlight {
+            color: #f0a83c;
+        }
+
+        section {
+            margin-bottom: 55px;
+            scroll-margin-top: 90px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #f0a83c;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #e8e8e8;
+            margin: 26px 0 10px;
+        }
+
+        h3 .badge {
+            font-size: 12px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        p {
+            color: #bdbdbd;
+            margin: 10px 0;
+            font-size: 16px;
+            max-width: 780px;
+        }
+
+        ul, ol {
+            color: #bdbdbd;
+            margin: 10px 0 10px 22px;
+            max-width: 780px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: #0a0a0a;
+            color: #f0a83c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+
+        pre.code {
+            background: #0a0a0a;
+            padding: 22px;
+            border-radius: 10px;
+            border: 1px solid #2a2a2a;
+            overflow-x: auto;
+            margin: 14px 0;
+            max-width: fit-content;
+        }
+
+        pre.code code {
+            background: none;
+            padding: 0;
+            color: #e8e8e8;
+            font-family: Consolas, monospace;
+            font-size: 14.5px;
+            white-space: pre;
+            display: block;
+        }
+
+        .kw { color: #f0a83c; }
+        .ty { color: #7fb8e0; }
+        .str { color: #9fce7f; }
+        .cm { color: #6a6a6a; font-style: italic; }
+
+        table {
+            border-collapse: collapse;
+            margin: 14px 0;
+            width: 100%;
+            max-width: 780px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 15px;
+        }
+
+        th {
+            color: #f0a83c;
+        }
+
+        td {
+            color: #bdbdbd;
+        }
+
+        td code, th code {
+            font-size: 13px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+            max-width: 780px;
+        }
+
+        .mini-card {
+            background: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+
+        .mini-card h4 {
+            color: #f0a83c;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .mini-card p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .status-done {
+            color: #7fce8f;
+            font-weight: bold;
+        }
+
+        .status-progress {
+            color: #f0a83c;
+            font-weight: bold;
+        }
+
+        .status-planned {
+            color: #888;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .badge.done { background: #1c2e1c; color: #7fce8f; }
+        .badge.spec { background: #2e2410; color: #f0a83c; }
+
+        .note {
+            background: #1c1c1c;
+            border-left: 3px solid #f0a83c;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin: 16px 0;
+            max-width: 760px;
+        }
+
+        .note p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        @media(max-width: 900px) {
+            aside { display: none; }
+            main { padding: 30px 4%; }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a class="brand" href="index.html">
+        <img src="logo.png" alt="Shine Logo">
+        Shine
+    </a>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="wiki.html">Wiki</a>
+        <a href="https://github.com/Shine-Language/Shine-Compiler">GitHub</a>
+    </div>
+</nav>
+
+<div class="layout">
+
+    <aside>
+        <input type="text" class="search-box" id="wikiSearch" placeholder="Search the wiki..." autocomplete="off">
+
+        <h4>Overview</h4>
+        <a href="#intro">Introduction</a>
+        <a href="#status">Project Status</a>
+        <a href="#install">Getting Started</a>
+        <a href="#layout-section">Repo Layout</a>
+
+        <h4>Language Guide</h4>
+        <a href="#structure">Program Structure</a>
+        <a href="#comments">Comments</a>
+        <a href="#types">Types</a>
+        <a href="#variables">Variables (let / var)</a>
+        <a href="#operators">Operators</a>
+        <a href="#control-flow">Control Flow</a>
+        <a href="#functions">Functions</a>
+        <a href="#strings">Strings</a>
+        <a href="#pointers">Pointers</a>
+        <a href="#structs">Structs</a>
+        <a href="#builtins">Builtins</a>
+
+        <h4>Examples</h4>
+        <a href="#ex-hello">hello.shine</a>
+        <a href="#ex-test">test.shine</a>
+        <a href="#ex-v02">v0.2.0 example</a>
+        <a href="#ex-v03">v0.3.0 example</a>
+        <a href="#ex-v04">v0.4.0 example</a>
+        <a href="#ex-calc">calc.shine</a>
+        <a href="#ex-v06">v0.6.0 example</a>
+        <a href="#ex-v08">v0.8.0 example</a>
+
+        <h4>Reference</h4>
+        <a href="#cli">CLI Reference</a>
+        <a href="#error-handling">Error Handling</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#license">License</a>
+    </aside>
+
+    <main>
+
+        <div class="page-header">
+            <h1><span class="highlight">Shine</span> Wiki</h1>
+            <p>Everything currently documented and demonstrated about Shine; a small, low level language that compiles straight to native machine code through LLVM. No runtime, no VM.</p>
+        </div>
+
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>
+                Shine is a small compiled language with its own hand-written lexer, recursive-descent parser, and
+                LLVM-based code generator. Source files compile down to a native object file, which is linked
+                straight into an executable. There is no interpreter, no bytecode, no VM, and no garbage collector.
+            </p>
+            <p>
+                Shine programs link against libc and nothing else. The project is developed by
+                <strong>KerbalMissile</strong> and is open source under the GPL-3.0 license on
+                <a href="https://github.com/Shine-Language/Shine-Compiler" style="color:#f0a83c;">GitHub</a>.
+            </p>
+        </section>
+
+        <section id="status">
+            <h2>Project Status</h2>
+            <p>Shine is under active development. As of the current build, the compiler compiles functions with parameters, calls, string/int literals, variables, operators, comparisons, control flow, real types, pointers, and structs. Arrays are next up.</p>
+            <div class="card-grid">
+                <div class="mini-card">
+                    <h4>v0.1.0</h4>
+                    <p>Lexer, parser, codegen for functions, return, calls, literals, and the <code>write</code> builtin.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.2.0</h4>
+                    <p><code>let</code> / <code>var</code> variables, assignment, arithmetic and comparison operators.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.3.0</h4>
+                    <p>Control flow: <code>if</code> / <code>else</code>, <code>loop</code>, <code>stop</code>, <code>cont</code>.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.4.0</h4>
+                    <p><code>write()</code> for int expressions, <code>user_input()</code> for reading integers.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.5.0</h4>
+                    <p>Better default compiler error messages and general error-handling improvements.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.6.0</h4>
+                    <p>Real type hierarchy, fixed-width integers (<code>i8</code> up to <code>i64</code>, <code>u8</code>/<code>u32</code>), pointers (<code>&amp;</code> / <code>*</code>), and a type-checking pass.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.7.0</h4>
+                    <p><code>-32</code> flag for 32-bit compilation, <code>-c</code> compile-only flag, colored success/failure driver output.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.8.0</h4>
+                    <p>Structs, struct literals, nested field access, and field access through pointers.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>v0.9.0 <span class="badge spec">in progress</span></h4>
+                    <p>Fixed-size arrays, indexing, array/pointer decay, and possibly simple slices.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="install">
+            <h2>Getting Started</h2>
+            <p>Compiling a Shine file is a single command:</p>
+            <pre class="code"><code>shinec yourfile.shine -o output.exe</code></pre>
+            <p>Your Shine code is then compiled and linked, ready to run as <code>output.exe</code>.</p>
+
+            <h3>Building the Compiler from Source (Windows, MSYS2/MinGW)</h3>
+            <p>Shine's compiler itself is built with CMake + Ninja against LLVM, inside an MSYS2 MINGW64 shell. Every command below must be run from that shell.</p>
+            <pre class="code"><code><span class="cm"># install the toolchain</span>
+pacman -S mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake \
+          mingw-w64-x86_64-llvm mingw-w64-x86_64-ninja
+
+<span class="cm"># configure and build</span>
+cmake -B build -G Ninja
+cmake --build build
+
+<span class="cm"># run the unit tests</span>
+./build/tests/shine_tests.exe
+
+<span class="cm"># compile and run the hello world example</span>
+./build/shinec.exe examples/hello.shine -o hello.exe
+./hello.exe</code></pre>
+        </section>
+
+        <section id="layout-section">
+            <h2>Repository Layout (Compiler Repo)</h2>
+            <table>
+                <tr><th>Path</th><th>Contents</th></tr>
+                <tr><td><code>include/shine/</code></td><td>Compiler headers</td></tr>
+                <tr><td><code>src/</code></td><td>Lexer, parser, codegen, driver (<code>main.cpp</code>)</td></tr>
+                <tr><td><code>tests/</code></td><td>Unit tests</td></tr>
+                <tr><td><code>examples/</code></td><td>Sample <code>.shine</code> programs</td></tr>
+                <tr><td><code>assets/</code></td><td>Project assets (logo, etc.)</td></tr>
+                <tr><td><code>scripts/</code></td><td>Build/dev scripts</td></tr>
+                <tr><td><code>CMakeLists.txt</code></td><td>CMake build configuration</td></tr>
+                <tr><td><code>ROADMAP.md</code></td><td>Version-by-version feature roadmap</td></tr>
+            </table>
+        </section>
+
+        <section id="layout-section">
+            <h2>Suggested Repository Layout (Your Repo)</h2>
+            <table>
+                <tr><th>Path</th><th>Contents</th></tr>
+                <tr><td><code>src/</code></td><td>Subfolders, .shine files, etc</td></tr>
+                <tr><td><code>assets/</code></td><td>Project assets (logo, etc)</td></tr>
+            </table>
+        </section>
+
+
+        <section id="structure">
+            <h2>Program Structure</h2>
+            <p>Every Shine program is a set of functions declared with <code>fn</code>. Execution starts at <code>main</code>, which returns an integer to the OS via <code>r/</code> or <code>return/</code> (the return operator, <code>r/</code> and <code>return/</code> are both valid, your choice). A minimal program looks like this:</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> main() {
+    write(<span class="str">"Hello, World!"</span>);
+    r/0;
+}</code></pre>
+            <div class="note">
+                <p>Functions without an explicit return at the end automatically return <code>0</code> (or <code>void</code> for void functions). This is implicit and not an error.</p>
+            </div>
+        </section>
+
+        <section id="comments">
+            <h2>Comments</h2>
+            <p>Shine supports single-line and multi-line comments.</p>
+            <table>
+                <tr><th>Syntax</th><th>Description</th></tr>
+                <tr><td><code>// comment</code></td><td>Single-line comment; extends to the end of the line</td></tr>
+                <tr><td><code>/* comment */</code></td><td>Multi-line (block) comment; can span multiple lines</td></tr>
+            </table>
+            <pre class="code"><code><span class="cm">// This is a single-line comment.</span>
+
+<span class="cm">/*
+    This is a block comment.
+    It can span multiple lines.
+*/</span>
+
+<span class="kw">fn</span> <span class="ty">int</span> main() {
+    write(<span class="str">"Comments work!"</span>);  <span class="cm">// inline comment</span>
+    r/0;
+}</code></pre>
+            <div class="note">
+                <p>Block comments do not nest. A <code>/*</code> inside a block comment closes the comment at the first <code>*/</code>.</p>
+            </div>
+        </section>
+
+        <section id="types">
+            <h2>Types</h2>
+            <p>Shine has a full fixed-width type hierarchy, backed by a dedicated type-checking pass. Plain <code>int</code> remains an alias for <code>i32</code> for backwards compatibility.</p>
+            <table>
+                <tr><th>Type</th><th>Meaning</th></tr>
+                <tr><td><code>void</code></td><td>No return value</td></tr>
+                <tr><td><code>int</code></td><td>Generic integer (alias for <code>i32</code>)</td></tr>
+                <tr><td><code>i8</code> / <code>u8</code></td><td>8-bit signed / unsigned integer (byte)</td></tr>
+                <tr><td><code>i16</code> / <code>u16</code></td><td>16-bit signed / unsigned integer</td></tr>
+                <tr><td><code>i32</code> / <code>u32</code></td><td>32-bit signed / unsigned integer</td></tr>
+                <tr><td><code>i64</code> / <code>u64</code></td><td>64-bit signed / unsigned integer</td></tr>
+                <tr><td><code>*T</code></td><td>Pointer to a value of type <code>T</code> (e.g. <code>*i32</code>, <code>**i32</code>)</td></tr>
+                <tr><td><code>StructName</code></td><td>A user-defined struct type</td></tr>
+            </table>
+            <div class="note">
+                <p>The literal <code>0</code> is accepted wherever a pointer type is expected, acting as a null pointer constant (same as in C).</p>
+            </div>
+        </section>
+
+        <section id="variables">
+            <h2>Variables: <code>let</code> and <code>var</code></h2>
+            <p><code>let(type)</code> declares an <strong>immutable</strong> value; <code>var(type)</code> declares a value that can be reassigned later.</p>
+            <pre class="code"><code><span class="cm">// let creates an immutable value.</span>
+<span class="kw">let</span>(<span class="ty">int</span>) base = 10;
+
+<span class="cm">// var creates a value that can be changed later.</span>
+<span class="kw">var</span>(<span class="ty">int</span>) total = 4;
+total = total + base * 2;</code></pre>
+            <div class="note">
+                <p>Function parameters are always immutable. You cannot reassign a parameter inside the function body; only <code>var</code> declared locals can be changed.</p>
+            </div>
+        </section>
+
+        <section id="operators">
+            <h2>Operators</h2>
+            <p>Standard arithmetic and comparison operators are supported. Comparisons currently evaluate to <code>0</code> or <code>1</code> as <code>i32</code> values; there is no boolean type.</p>
+            <table>
+                <tr><th>Category</th><th>Operators</th></tr>
+                <tr><td>Arithmetic</td><td><code>+</code> <code>-</code> <code>*</code> <code>/</code></td></tr>
+                <tr><td>Comparison</td><td><code>==</code> <code>!=</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code></td></tr>
+                <tr><td>Assignment</td><td><code>=</code></td></tr>
+                <tr><td>Address-of / deref</td><td><code>&amp;</code> (address-of), <code>*</code> (declare pointer type / dereference)</td></tr>
+            </table>
+
+            <h3>Precedence</h3>
+            <p>Operators are evaluated from lowest to highest precedence as follows:</p>
+            <table>
+                <tr><th>Precedence</th><th>Operators</th></tr>
+                <tr><td>1 (lowest)</td><td><code>==</code> <code>!=</code></td></tr>
+                <tr><td>2</td><td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td></tr>
+                <tr><td>3</td><td><code>+</code> <code>-</code></td></tr>
+                <tr><td>4</td><td><code>*</code> <code>/</code></td></tr>
+                <tr><td>5 (highest)</td><td><code>&amp;</code> (unary), <code>*</code> (unary)</td></tr>
+            </table>
+        </section>
+
+        <section id="control-flow">
+            <h2>Control Flow</h2>
+            <p>Shine unifies <code>while</code> and <code>for</code> into a single <code>loop(condition) { }</code> construct. Loop control uses <code>stop</code> (break) and <code>cont</code> (continue) instead of the usual keywords.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> sumTo(n: <span class="ty">int</span>) {
+    <span class="kw">var</span>(<span class="ty">int</span>) total = 0;
+    <span class="kw">var</span>(<span class="ty">int</span>) i = 0;
+    loop (i &lt;= n) {
+        if (i == 3) {
+            i = i + 1;
+            cont;   <span class="cm">// skip the rest of this iteration</span>
+        }
+        total = total + i;
+        i = i + 1;
+    }
+    r/total;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> main() {
+    <span class="kw">var</span>(<span class="ty">int</span>) count = 0;
+    loop (1) {          <span class="cm">// loop(1) is an infinite loop</span>
+        count = count + 1;
+        if (count == 5) {
+            stop;        <span class="cm">// break out of the loop</span>
+        }
+    }
+    r/count;
+}</code></pre>
+            <table>
+                <tr><th>Keyword</th><th>Equivalent to</th></tr>
+                <tr><td><code>if</code> / <code>else</code></td><td>Standard conditional branching, chains with <code>else if</code></td></tr>
+                <tr><td><code>loop(cond) { }</code></td><td><code>while</code> / <code>for</code> (combined into one construct)</td></tr>
+                <tr><td><code>stop</code></td><td><code>break</code></td></tr>
+                <tr><td><code>cont</code></td><td><code>continue</code></td></tr>
+            </table>
+        </section>
+
+        <section id="functions">
+            <h2>Functions</h2>
+            <p>Functions are declared with <code>fn returnType name(param: type, ...) { ... }</code>. Parameters are passed as real LLVM arguments and referenced by name in the body. A function returns using <code>r/</code> (shorthand for <code>return</code>; the longer <code>return/</code> form also appears in later examples).</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> identity(x: <span class="ty">int</span>) {
+    r/x;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> pick_second(a: <span class="ty">int</span>, b: <span class="ty">int</span>) {
+    r/b;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> main() {
+    r/pick_second(identity(1), 2);  <span class="cm">// nested calls work</span>
+}</code></pre>
+            <div class="note">
+                <p>Both <code>r/</code> and <code>return/</code> work as the return keyword. The <code>/</code> is part of the keyword, not a separate token.</p>
+            </div>
+        </section>
+
+        <section id="strings">
+            <h2>Strings</h2>
+            <p>String literals are enclosed in double quotes. Shine supports the following escape sequences:</p>
+            <table>
+                <tr><th>Escape</th><th>Meaning</th></tr>
+                <tr><td><code>\n</code></td><td>Newline</td></tr>
+                <tr><td><code>\t</code></td><td>Tab</td></tr>
+                <tr><td><code>\"</code></td><td>Double quote</td></tr>
+                <tr><td><code>\\</code></td><td>Backslash</td></tr>
+            </table>
+            <pre class="code"><code>write(<span class="str">"Line one\nLine two"</span>);     <span class="cm">// prints on two lines</span>
+write(<span class="str">"Tab\there"</span>);                <span class="cm">// prints with a tab</span>
+write(<span class="str">"She said \"hello\""</span>);        <span class="cm">// escaped quotes</span>
+write(<span class="str">"Backslash: \\"</span>);            <span class="cm">// escaped backslash</span></code></pre>
+            <div class="note">
+                <p>Any other escape sequence (e.g. <code>\r</code>, <code>\0</code>) produces a compile error: <code>bad escape sequence</code>.</p>
+            </div>
+        </section>
+
+        <section id="pointers">
+            <h2>Pointers</h2>
+            <p>Pointers use <code>&amp;</code> to take the address of a value, and <code>*</code> both to declare a pointer type and to dereference. Pointer-to-pointer types like <code>**i32</code> are supported in the type hierarchy.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">void</span> increment(p: *<span class="ty">i32</span>) {
+    *p = *p + 1;
+}
+
+<span class="kw">fn</span> <span class="ty">i32</span> main() {
+    <span class="kw">var</span>(<span class="ty">i32</span>) x = 10;
+    <span class="kw">var</span>(*<span class="ty">i32</span>) px = &amp;x;
+
+    increment(px);
+    write(*px); <span class="cm">// 11</span>
+    write(x);   <span class="cm">// 11, same storage</span>
+
+    <span class="kw">var</span>(**<span class="ty">i32</span>) ppx = &amp;px;
+    write(**ppx); <span class="cm">// 11</span>
+
+    r/0;
+}</code></pre>
+        </section>
+
+        <section id="structs">
+            <h2>Structs</h2>
+            <p>Structs are declared with <code>struct Name { field: type, ... }</code>, built with struct-literal syntax, and support both direct and pointer-based field access. Trailing commas after the last field are optional.</p>
+            <pre class="code"><code><span class="kw">struct</span> Vec2 {
+    x: <span class="ty">i32</span>,
+    y: <span class="ty">i32</span>,
+}
+
+<span class="kw">struct</span> Player {
+    pos: Vec2,
+    health: <span class="ty">i32</span>,
+    name: *<span class="ty">i32</span>, <span class="cm">// placeholder until a real string/array type exists</span>
+}
+
+<span class="kw">fn</span> Vec2 add(a: Vec2, b: Vec2) {
+    r/Vec2 { x: a.x + b.x, y: a.y + b.y };  <span class="cm">// struct literal</span>
+}
+
+<span class="kw">fn</span> <span class="ty">void</span> damage(p: *Player, amount: <span class="ty">i32</span>) {
+    (*p).health = (*p).health - amount;    <span class="cm">// field access through a pointer</span>
+}</code></pre>
+        </section>
+
+        <section id="builtins">
+            <h2>Builtins</h2>
+            <table>
+                <tr><th>Builtin</th><th>Description</th></tr>
+                <tr><td><code>write(expr)</code></td><td>Prints a string literal or int-valued expression, lowers to <code>puts</code>. A compiler builtin for now; the roadmap plans to move it into a real standard library.</td></tr>
+                <tr><td><code>user_input(prompt)</code></td><td>Prints <code>prompt</code>, reads an integer from the user, and returns it.</td></tr>
+                <tr><td><code>terminal.pause(user_action)</code></td><td>Pauses the terminal so output is visible before the program exits, waiting for a user action.</td></tr>
+            </table>
+        </section>
+
+        <section id="examples">
+            <h2>Full Examples</h2>
+            <p>Every example currently shipped with the language, in order of complexity.</p>
+
+            <h3 id="ex-hello">hello.shine</h3>
+            <p>The classic first program. Prints a greeting and returns cleanly.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> main() {
+    write(<span class="str">"Hello, World!"</span>);
+    terminal.pause(user_action);
+
+    <span class="cm">// Return 0</span>
+    r/0;
+}</code></pre>
+
+            <h3 id="ex-test">test.shine</h3>
+            <p>Exercises the <code>write</code> builtin and function calls, including a nested call passed as an argument.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> identity(x: <span class="ty">int</span>) {
+    <span class="cm">// Return the input unchanged so we can verify parameter passing.</span>
+    r/x;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> pick_second(a: <span class="ty">int</span>, b: <span class="ty">int</span>) {
+    <span class="cm">// Ignore the first argument and return the second one.</span>
+    r/b;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> main() {
+    write(<span class="str">"Shine v0.1.0"</span>);
+    write(<span class="str">"compiled and linked successfully"</span>);
+
+    terminal.pause(user_action);
+
+    <span class="cm">// Call another function with a nested call and return its result.</span>
+    r/pick_second(identity(1), 2);
+}</code></pre>
+
+            <h3 id="ex-v02">v0.2.0 example</h3>
+            <p>Demonstrates <code>let</code>, <code>var</code>, assignment, operator precedence, and comparisons.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> main() {
+    <span class="cm">// let creates an immutable value.</span>
+    <span class="kw">let</span>(<span class="ty">int</span>) base = 10;
+
+    <span class="cm">// var creates a value that can be changed later.</span>
+    <span class="kw">var</span>(<span class="ty">int</span>) total = 4;
+
+    <span class="cm">// Operators work inside expressions, with * before +.</span>
+    total = total + base * 2;
+
+    write(<span class="str">"Shine v0.2.0 example"</span>);
+    write(<span class="str">"let, var, assignment, operators, and comparisons worked"</span>);
+
+    terminal.pause(user_action);
+
+    <span class="cm">// Comparisons return 0 or 1 for now.</span>
+    r/total &gt;= 24;
+}</code></pre>
+
+            <h3 id="ex-v03">v0.3.0 example</h3>
+            <p>Introduces <code>loop</code>, <code>if</code>/<code>else</code>, <code>cont</code>, and <code>stop</code>. These are Shine's control flow.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> sumTo(n: <span class="ty">int</span>) {
+    <span class="kw">var</span>(<span class="ty">int</span>) total = 0;
+    <span class="kw">var</span>(<span class="ty">int</span>) i = 0;
+    loop (i &lt;= n) {
+        if (i == 3) {
+            i = i + 1;
+            cont;
+        }
+        total = total + i;
+        i = i + 1;
+    }
+    r/total;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> main() {
+    <span class="kw">var</span>(<span class="ty">int</span>) x = sumTo(10);
+    if (x &gt; 40) {
+        write(<span class="str">"big"</span>);
+    } else {
+        write(<span class="str">"small"</span>);
+    }
+
+    <span class="kw">var</span>(<span class="ty">int</span>) count = 0;
+    loop (1) {
+        count = count + 1;
+        if (count == 5) {
+            stop;
+        }
+    }
+
+    r/count + x;
+}</code></pre>
+
+            <h3 id="ex-v04">v0.4.0 example</h3>
+            <p><code>write()</code> now accepts int-valued expressions, and <code>user_input()</code> reads an integer from the user.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> square(n: <span class="ty">int</span>) {
+    r/n * n;
+}
+
+<span class="kw">fn</span> <span class="ty">int</span> main() {
+    <span class="cm">// write() now accepts int-valued expressions, not just string literals.</span>
+    write(42);
+    write(square(7));
+
+    <span class="cm">// user_input() prints the prompt, reads an int, and returns it.</span>
+    <span class="kw">var</span>(<span class="ty">int</span>) x = user_input(<span class="str">"Enter a number: "</span>);
+    write(x * 2);
+
+    r/0;
+}</code></pre>
+
+            <h3 id="ex-calc">calc.shine</h3>
+            <p>A small calculator that puts everything so far together: <code>user_input</code>, <code>var</code>, <code>if</code>/<code>else if</code>/<code>else</code> chains, and <code>terminal.pause</code>.</p>
+            <pre class="code"><code><span class="kw">fn</span> <span class="ty">int</span> main() {
+
+    <span class="cm">// declare all the variables</span>
+    <span class="kw">var</span>(<span class="ty">int</span>) num1 = user_input(<span class="str">"Pick a number  "</span>);
+    <span class="kw">var</span>(<span class="ty">int</span>) num2 = user_input(<span class="str">"Pick a second number  "</span>);
+    <span class="kw">var</span>(<span class="ty">int</span>) op = user_input(<span class="str">"What operator do you want? 1 = +, 2 = -, 3 = *, 4 = /  "</span>);
+    <span class="kw">var</span>(<span class="ty">int</span>) product = 0;
+    <span class="kw">var</span>(<span class="ty">int</span>) validop = 1;
+
+    if (op == 1) {
+        product = num1 + num2;
+    }
+    else if (op == 2) {
+        product = num1 - num2;
+    }
+    else if (op == 3) {
+        product = num1 * num2;
+    }
+    else if (op == 4) {
+        product = num1 / num2;
+    } else {
+        validop = 0;
+        write(<span class="str">"No valid number entered for the operator. Please retry and enter a valid input."</span>);
+    }
+
+    if (validop == 1) {
+        write(product);
+    }
+
+    terminal.pause(user_action);
+    r/0;
+}</code></pre>
+
+            <h3 id="ex-v06">v0.6.0 example</h3>
+            <p>Fixed-width integer types and pointers. Use <code>&amp;</code> to take an address, <code>*</code> to declare a pointer type or dereference.</p>
+            <pre class="code"><code><span class="cm">// v0.6.0: real types, fixed-width ints, pointers.</span>
+
+<span class="kw">fn</span> <span class="ty">i32</span> add(a: <span class="ty">i32</span>, b: <span class="ty">i32</span>) {
+    r/a + b;
+}
+
+<span class="kw">fn</span> <span class="ty">void</span> increment(p: *<span class="ty">i32</span>) {
+    *p = *p + 1;
+}
+
+<span class="kw">fn</span> <span class="ty">i32</span> main() {
+    <span class="cm">// Fixed-width int locals. "int" alone still means i32 for back-compat.</span>
+    <span class="kw">let</span>(<span class="ty">i8</span>) small = 5;
+    <span class="kw">let</span>(<span class="ty">u8</span>) byte = 255;
+    <span class="kw">let</span>(<span class="ty">i16</span>) medium = 1000;
+    <span class="kw">let</span>(<span class="ty">i32</span>) normal = add(3, 4);
+    <span class="kw">let</span>(<span class="ty">u32</span>) unsigned = 4000000000;
+    <span class="kw">let</span>(<span class="ty">i64</span>) big = 9000000000;
+
+    write(normal);
+    write(big);
+
+    <span class="cm">// Pointers: &amp; to take an address, * to declare a pointer type / deref.</span>
+    <span class="kw">var</span>(<span class="ty">i32</span>) x = 10;
+    <span class="kw">var</span>(*<span class="ty">i32</span>) px = &amp;x;
+
+    increment(px);
+    write(*px); <span class="cm">// 11</span>
+    write(x); <span class="cm">// 11, same storage</span>
+
+    <span class="cm">// Pointer to pointer, just to exercise the type hierarchy.</span>
+    <span class="kw">var</span>(**<span class="ty">i32</span>) ppx = &amp;px;
+    write(**ppx); <span class="cm">// 11</span>
+
+    r/0;
+}</code></pre>
+
+            <h3 id="ex-v08">v0.8.0 example</h3>
+            <p>Structs, struct literals, and field access. They work both directly and through a pointer.</p>
+            <pre class="code"><code><span class="cm">// v0.8.0: structs.</span>
+
+<span class="kw">struct</span> Vec2 {
+    x: <span class="ty">i32</span>,
+    y: <span class="ty">i32</span>,
+}
+
+<span class="kw">struct</span> Player {
+    pos: Vec2,
+    health: <span class="ty">i32</span>,
+    name: *<span class="ty">i32</span>, <span class="cm">// placeholder until a real string/array type exists</span>
+}
+
+<span class="kw">fn</span> Vec2 add(a: Vec2, b: Vec2) {
+    <span class="cm">// Struct literal, built from field access on the params.</span>
+    r/Vec2 { x: a.x + b.x, y: a.y + b.y };
+}
+
+<span class="kw">fn</span> <span class="ty">void</span> damage(p: *Player, amount: <span class="ty">i32</span>) {
+    <span class="cm">// Field access/assignment through a pointer-to-struct.</span>
+    (*p).health = (*p).health - amount;
+}
+
+<span class="kw">fn</span> <span class="ty">i32</span> main() {
+    <span class="kw">var</span>(Vec2) origin = Vec2 { x: 0, y: 0 };
+    <span class="kw">var</span>(Vec2) delta  = Vec2 { x: 3, y: 4 };
+
+    <span class="kw">var</span>(Vec2) moved = add(origin, delta);
+    write(moved.x); <span class="cm">// 3</span>
+    write(moved.y); <span class="cm">// 4</span>
+
+    <span class="kw">var</span>(Player) hero = Player { pos: moved, health: 100, name: 0 };
+
+    <span class="kw">var</span>(*Player) pHero = &amp;hero;
+    damage(pHero, 30);
+
+    write(hero.health);   <span class="cm">// 70, mutated through the pointer</span>
+    write(hero.pos.x);    <span class="cm">// 3, nested field access</span>
+
+    return/0;
+}</code></pre>
+        </section>
+
+        <section id="cli">
+            <h2>CLI Reference</h2>
+            <p>The compiler is invoked with:</p>
+            <pre class="code"><code>shinec &lt;input.shine&gt; [-o &lt;output&gt;] [-32] [-c]</code></pre>
+            <table>
+                <tr><th>Flag</th><th>Description</th></tr>
+                <tr><td><code>-o &lt;output&gt;</code></td><td>Set the output file path. Defaults to <code>&lt;input&gt;.exe</code> on Windows, or <code>&lt;input&gt;.o</code> with <code>-32</code> or <code>-c</code>.</td></tr>
+                <tr><td><code>-32</code></td><td>Compile to 32-bit freestanding ELF object (skips linking)</td></tr>
+                <tr><td><code>-c</code></td><td>Compile only; emit an object file and skip linking</td></tr>
+            </table>
+            <div class="note">
+                <p>The compiler uses a bundled MinGW linker when available, falling back to <code>g++</code> on Windows or <code>cc</code> on other platforms.</p>
+            </div>
+        </section>
+
+        <section id="error-handling">
+            <h2>Error Handling</h2>
+            <p>Errors are reported in the format <code>file:line:col: error: message</code>, with the offending source line printed below.</p>
+            <pre class="code"><code>example.shine:3:5: error: undeclared identifier 'totl' (did you mean 'total'?)
+    total = totl + 1;</code></pre>
+            <p>The compiler suggests corrections for misspelled identifiers and function names using Levenshtein distance, as long as the distance is within <code>max(2, name.length / 3)</code>.</p>
+            <h3>Common Errors</h3>
+            <table>
+                <tr><th>Error</th><th>Cause</th></tr>
+                <tr><td><code>cannot assign to immutable variable</code></td><td>Assigning to a <code>let</code> variable or a function parameter</td></tr>
+                <tr><td><code>variable already declared</code></td><td>Redeclaring a variable in the same scope</td></tr>
+                <tr><td><code>undeclared identifier</code></td><td>Using a variable or function that has not been declared</td></tr>
+                <tr><td><code>unknown type</code></td><td>Using a type name that does not exist</td></tr>
+                <tr><td><code>stop/cont outside of a loop</code></td><td>Using <code>stop</code> or <code>cont</code> outside a <code>loop</code></td></tr>
+                <tr><td><code>bad escape sequence</code></td><td>Using an unsupported string escape (e.g. <code>\r</code>)</td></tr>
+                <tr><td><code>struct has no field</code></td><td>Accessing a field that does not exist on a struct</td></tr>
+                <tr><td><code>expected type, got</code></td><td>Type mismatch in a variable declaration or assignment</td></tr>
+            </table>
+        </section>
+
+        <section id="roadmap">
+            <h2>Roadmap</h2>
+
+            <h3>v0.1.0 first steps <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li>Lexer, parser, codegen for fn/return/call/literals</li>
+                <li><code>write</code> builtin via <code>puts</code></li>
+                <li>Object file emission + link, builds hello.shine</li>
+                <li>Function parameters, identifier expressions, per-function argument passing</li>
+            </ul>
+
+            <h3>v0.2.0 variables and operators <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li><code>let(type) name = expr;</code></li>
+                <li><code>var(type) name = expr;</code></li>
+                <li>Assignment to <code>var</code></li>
+                <li><code>+ - * /</code>, comparisons</li>
+            </ul>
+
+            <h3>v0.3.0 control flow <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li>if/else, while, for, etc.; while/for are combined into <code>loop(condition) {}</code></li>
+                <li>break (written as <code>stop</code>) and continue (written as <code>cont</code>) loop controls</li>
+            </ul>
+
+            <h3>v0.4.0 inputs &amp; non string literals <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li>User inputs, written as <code>user_input("TEXT")</code>; it prints the prompt, reads an int from stdin, and returns it</li>
+                <li><code>write()</code> supports non-string literals; any int-valued expression can be passed to it</li>
+            </ul>
+
+            <h3>v0.5.0 error handling <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li>Better default error messages for the compiler</li>
+                <li>General improvements to error handling</li>
+            </ul>
+
+            <h3>v0.6.0 real types <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li>Type hierarchy instead of string-named TypeRef</li>
+                <li>Pointers, fixed-width ints</li>
+                <li>Type-checking pass</li>
+            </ul>
+
+            <h3>v0.7.0 build/driver improvements <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li><code>-32</code> flag for 32-bit compilation</li>
+                <li><code>-c</code> flag (compile only, skip linking)</li>
+                <li>Success/failure messages colored (green/red) in the driver output</li>
+            </ul>
+
+            <h3>v0.8.0 structs <span class="status-done">✓ done</span></h3>
+            <ul>
+                <li><code>struct Name { field: type, ... }</code> declarations</li>
+                <li>Field access (<code>x.field</code>) and field assignment (<code>x.field = expr;</code>)</li>
+                <li>Struct values as function params/returns</li>
+                <li>Struct literal / initialization syntax</li>
+                <li><code>return/0;</code> is also valid, alongside <code>r/0;</code></li>
+            </ul>
+
+            <h3>v0.9.0 arrays <span class="status-progress">in progress</span></h3>
+            <ul>
+                <li>Fixed-size arrays</li>
+                <li>Indexing (<code>arr[i]</code>), with a decided and documented bounds-check behavior</li>
+                <li>Array/pointer decay interaction</li>
+                <li>Simple slices (ptr + length) if time allows, otherwise deferred past v1.0.0</li>
+            </ul>
+
+            <h3>v0.10.0 standard library <span class="status-planned">planned</span></h3>
+            <ul>
+                <li>Minimal extern mechanism, just enough to call into libc (<code>printf</code>, <code>scanf</code>, <code>malloc</code>)</li>
+                <li>Move <code>write</code>/<code>user_input</code>/<code>terminal.pause</code> out of the compiler and into Shine-source stdlib functions</li>
+                <li>Basic <code>String</code>/<code>Buffer</code>-style type built on structs + arrays</li>
+            </ul>
+
+            <h3>v0.11.0 error handling <span class="status-planned">planned</span></h3>
+            <ul>
+                <li>Result/error-union style return values</li>
+                <li>Propagation syntax, or at minimum pattern-matching on Result</li>
+            </ul>
+
+            <h3>v0.12.0 multi-file modules <span class="status-planned">planned</span></h3>
+            <ul>
+                <li><code>import</code>/module resolution</li>
+                <li>Symbol visibility (pub/private)</li>
+                <li>Multi-translation-unit linking in the driver</li>
+            </ul>
+
+            <h3>v1.0.0 out of beta <span class="status-planned">planned</span></h3>
+            <ul>
+                <li>Syntax freeze, written language spec/reference (not just README examples)</li>
+                <li>Full test coverage pass, basic parser/lexer fuzzing</li>
+                <li>Documented versioning/back-compat policy going forward</li>
+                <li>README status line updated to reflect 1.0, not active-development beta</li>
+            </ul>
+
+            <h3>Later <span class="status-planned">planned</span></h3>
+            <ul>
+                <li>Full C FFI (extern function declarations, calling into arbitrary native libs)</li>
+                <li><code>defer</code> statements for guaranteed cleanup</li>
+                <li>Function pointers and callbacks</li>
+                <li>Closures with explicit capture (allocator-controlled, no GC)</li>
+                <li>Allocator story in the stdlib (arena, pool, bump allocators)</li>
+                <li>Package manager + package ecosystem (Cargo/pip-style)</li>
+                <li>Ability to generate .dll's</li>
+                <li>UI Tool</li>
+                <li>Freestanding codegen mode (no libc, no CRT startup, custom entry point/linker script)</li>
+            </ul>
+
+            <h3>TBD <span class="status-planned">may or may not happen</span></h3>
+            <ul>
+                <li>Simple interpreter</li>
+            </ul>
+        </section>
+
+        <section id="license">
+            <h2>License</h2>
+            <p>Shine is open source, licensed under <strong>GPL-3.0</strong>. See the <code>LICENSE</code> file in the repository for full terms.</p>
+        </section>
+
+    </main>
+</div>
+
+<footer>
+    Shine Language - Developed By KerbalMissile · <a href="https://github.com/Shine-Language/Shine-Compiler" style="color:#f0a83c;">GitHub</a>
+</footer>
+
+<script>
+    const searchInput = document.getElementById('wikiSearch');
+    const mainSections = document.querySelectorAll('main section');
+
+    function stripTags(html) {
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        return div.textContent || '';
+    }
+
+    function clearHighlights() {
+        document.querySelectorAll('mark').forEach(function (mark) {
+            mark.replaceWith(mark.textContent);
+        });
+    }
+
+    function highlightText(node, query) {
+        const lower = node.textContent.toLowerCase();
+        const index = lower.indexOf(query);
+
+        if (index === -1 || node.nodeType !== Node.TEXT_NODE || node.parentElement && node.parentElement.tagName === 'MARK') {
+            return;
+        }
+
+        const start = document.createTextNode(node.textContent.slice(0, index));
+        const match = document.createElement('mark');
+        match.textContent = node.textContent.slice(index, index + query.length);
+        const end = document.createTextNode(node.textContent.slice(index + query.length));
+        node.replaceWith(start, match, end);
+    }
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+
+        clearHighlights();
+
+        mainSections.forEach(function (section) {
+            const content = stripTags(section.innerHTML).toLowerCase();
+
+            if (!query) {
+                section.classList.remove('hidden');
+            } else if (content.includes(query)) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+
+        if (!query) {
+            return;
+        }
+
+        mainSections.forEach(function (section) {
+            if (section.classList.contains('hidden')) {
+                return;
+            }
+            const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
+            let node;
+            while ((node = walker.nextNode())) {
+                if (node.textContent.trim() !== '' && node.parentElement && node.parentElement.tagName !== 'MARK') {
+                    highlightText(node, query);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

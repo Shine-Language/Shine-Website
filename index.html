@@ -34,6 +34,13 @@
             gap: 12px;
             font-size: 22px;
             font-weight: bold;
+            color: #e8e8e8;
+            text-decoration: none;
+        }
+
+        .brand:hover {
+            color: #f0a83c;
+            text-decoration: none;
         }
 
         .brand img {
@@ -41,9 +48,27 @@
             height: 40px;
         }
 
-        nav a {
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        nav a:not(.brand) {
             color: #f0a83c;
             text-decoration: none;
+            padding: 6px 16px;
+            border: 1px solid #3a3a3a;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        nav a:not(.brand):hover {
+            text-decoration: none;
+            border-color: #f0a83c;
+            background: rgba(240, 168, 60, 0.08);
         }
 
         section {
@@ -169,6 +194,18 @@
 
 <body>
 
+<nav>
+    <a class="brand" href="index.html">
+        <img src="logo.png" alt="Shine Logo">
+        Shine
+    </a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="wiki.html">Wiki</a>
+        <a href="https://github.com/Shine-Language/Shine-Compiler">GitHub</a>
+    </div>
+</nav>
 
 <section class="hero">
     <img src="logo.png" alt="Shine Logo">
@@ -188,12 +225,12 @@
     </p>
 
     <div class="buttons">
-        <a class="btn primary" href="https://github.com/Shine-Language/Shine-Compiler">
-            View Repository
+        <a class="btn primary" href="download.html">
+            Download
         </a>
 
-        <a class="btn secondary" href="https://github.com/Shine-Language/Shine-Compiler#using-the-compiler">
-            Getting  Started
+        <a class="btn secondary" href="https://github.com/Shine-Language/Shine-Compiler">
+            View Repository
         </a>
     </div>
 </section>
